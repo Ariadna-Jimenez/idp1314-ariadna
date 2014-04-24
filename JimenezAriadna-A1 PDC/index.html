@@ -1,0 +1,123 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>A1: PDC Unidad:5</i></li>
+    <li><b>Componentes del grupo:</b> <i>Ariadna Jiménez</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2013/2014</i></li>
+    <li><b>Fecha de entrega:</b> <i>24 de Abril de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Bloque 1</a> | <a href='#bloque2'>Bloque 2</a> | <a href='#final'>Conclusiones</a>
+</div>
+<h1><a id='bloque1'>PDC WinServer</a></h1>
+<p>En esta práctica usaremos 3 máquinas virtuales, dos windows 7 enterprise y un Windows 8 enterprise.</p>
+<p>Vamos a montar un PDC (Controlador Primario de Dominio) con Servidor Windows 2008</p>
+<p><b>Configuración inicial</b>
+<br>
+<img src='./files/1.png'/>
+<br>
+En la máquina de windows 2008:
+Configuramos el host con DNS1 el propio Windows-Server (127.0.0.1), y DNS2 el del centro (172.16.1.1)
+<br>
+<img src='./files/2.png'/>
+</p>
+<p>
+<b>Controlador de dominio</b>
+Como nombre de dominio pondremos un nombre corto, en este caso JIMENEZW1.IDP.
+<br>
+Para activar la función de controlador de dominios, abriremos una consola y ejecutamos el comando <b>"dcpromo".</b>
+<br>
+Luego se inicia el asistente de configuración de lo servicios del dominio de AD y como resultado obtendremos esta ventana:
+<br>
+<img src='./files/3.png'/>
+<br>
+<img src='./files/4.png'/>
+<br>
+<br>
+Después comprobamos que se han instalado varias "funciones" para controlar el dominio:
+<br>
+<br>
+<img src='./files/a.png'/>
+</p>
+<h1><a id='bloque2'>Usuarios del dominio</a></h1>
+<p>Crear el grupo JEDI con los siguientes usuarios de dominio: "yoda,", "obiwan" y "quigon". No confundir usuarios locales con usuarios del dominio.
+Crear el grupo SITH con los siguientes usuarios de dominio: "emperador", "vader" y "maul".</p>
+<br>
+(Imágenes de los grupos con sus respectivos usuarios de dominio)
+<br>
+<img src='./files/b.png'/>
+<img src='./files/c.png'/>
+<br>
+<a><h1>Equipos del dominio</a></h1>
+<br>
+Ahora necesitaremos 2 MV's con Windows 7 enterprise, que actuarán de clientes o equipos del dominio.
+<br>
+<img src='./files/d.png'/>
+(Aquí el ejemplo de una)
+<br>
+Comprobamos en el Windows server que se han unido ambos clientes:
+<br>
+<img src='./files/g.png'/>
+<br>
+<br>
+Comprobar en el PDC que aparecen los equipos "jimenez2a" y "jimenez2b" como equipos del dominio:
+<br>
+<br>
+<img src='./files/h.png'/>
+<br>
+<br>
+<a><h1>Perfiles móviles</a></h1>
+<br>
+En el PDC, crear la carpeta "E:\perfiles$", como compartida por red. Permisos lectura/escritura para todos los usuarios del dominio.
+<br>
+En el PDC, modificar el atributo "perfil" de los siguientes usuarios del dominio:
+<br>
+    yoda: \jimenez1\perfiles$\%username%
+    <br>
+    obiwan: \jimenez1\perfiles$\%username%
+    <br>
+    quigon: \jimenez1\perfiles$\%username%
+    <br>
+    Sólo se pudo realizar la parte de móviles por unos problemas que hubieron y no se lograron resolver.
+    <br>
+    <br>
+    <br>
+    Iniciar sesión en "jimeneza" con los usuarios yoda, obiwan, quigon y comprobar que se han creado las carpetas con los perfiles en el servidor.
+<br>
+<br>
+<img src='./files/i.png'/>
+<br>
+<br>
+<p>Por último, iniciaremos sesión en la máquina del administrador para limpiar el 
+equipo Cliente.
+<br>
+Ir a "Inicio -> Panel de Control -> Sistema -> Opciones Avanzadas -> Configuración de Perfiles de usuario". Eliminar las copias de los perfiles móviles en el equipo cliente
+ </p>
+ <br>
+ <img src='./files/k.png'/>
+ <br>
+ <br>
+ Y también pondremos un controlador de tiempo en el que los del grupo "jedi"
+ entren solo de 8:00-14:00 y los "Sith" de 14:00-20:00"
+ <br>
+ <br>
+ Ejemplo:
+ <br>
+  <img src='./files/l.png'/>
+<h1><a id='final'>Conclusiones</a></h1>
+<p>En esta práctica hemos tenido algunos problemas por los que no
+pudimos completar algunos pasos. De resto pudimos terminar las demás partes sin ningún problema.</p>
+</body>
+</html>
