@@ -1,0 +1,96 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>T&iacute;tulo del trabajo</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Fundamentos de Hardware</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>FreeNAS</i></li>
+    <li><b>Componentes del grupo:</b> <i>Ariadna Jiménez Rodríguez</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2013/2014</i></li>
+    <li><b>Fecha de entrega:</b> <i>12 de Mayo de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Bloque 1</a> | <a href='#bloque2'>Bloque 2</a> | <a href='#final'>Conclusiones</a>
+</div>
+<h1><a id='bloque1'>Preparar e instalar FreeNAS</a></h1>
+<p>Crearemos una máquina virtual que soporte este Sistema operativo, después de configurarla procedemos a 
+instalar el FreeNAS y le añadiremos 2 Discos más de 2GB cada uno.</p>
+<br>
+<img src='./files/2.png'/>
+<br>
+<img src='./files/1.png'/>
+<br>
+Después de una serie de pasos reiniciamos la máquina virtual y nos concentramos en la configuración inicial:
+<br>
+Configuración de red:
+<br>
+Pulsamos el número 1 para poder modificar o añadir una conf. de red y rellenamos los datos que nos piden.
+<br>
+<img src='./files/3.png'/>
+<br>
+Luego, pulsamos el 4 para modificar la puerta de enlace:
+<br>
+<img src='./files/4.png'/>
+<br>
+El botón 6 nos deja añadir el servidor DNS:
+<br>
+<img src='./files/5.png'/>
+<br>
+Por último el númemero 9 nos mete en una Shell donde podemos usar comandos, en este caso yo usé los siguientes:
+<img src='./files/6.png'/>
+<br>
+<br>
+<img src='./files/7.png'/>
+<br>
+Para comprobar que todo ha salido bien, hemos abierto otra máquina virtual, en mi caso un Windows 7 y hemos puesto en el navegador la IP de la máquina virtual
+que contiene el FreeNAS:
+<br>
+<img src='./files/8.png'/>
+<h1><a id='bloque2'>Crear un volumen</a></h1>
+<p>Desde la máquina virtual de windows7, vamos a realizar unas configuraciones del FreeNAS:
+<br>
+Crearemos un volumen a partir de los 2 discos de 2GB.
+<br>
+Nos vamos a "storage", abrimos volumenes y UFS manager:
+<br>
+<img src='./files/10.png'/>
+<br>
+Después de hacer eso nos aparece el volumen creado:
+<br>
+<img src='./files/11.png'/>
+<br>
+Luego activaremos el servicio de carpetas compartidas, ir a "Servicios" -> "Control de Servicios - > CIFS -> ON"
+<br>
+<img src='./files/12.png'/>
+<br>
+Por último iremos al servidor FreeNAS y entramos a la shell para ejecutar varios comandos:
+<br>
+df -hT:
+<br>
+<img src='./files/13.png'/>
+<br>
+mkdir /mnt/volumen1/public:
+<br>
+<img src='./files/14.png'/>
+<br>
+chmod 777 /mnt/volumen1/public (creamos una carpitada para compartir)
+<br>
+<img src='./files/15.png'/>
+<br>
+Y creamos un recurso compartida CIFS/SMB, ir a "Sharing/Compartido" -> "Añadir recurso CIFS". Path a /mnt/volumen1/public
+<br>
+<img src='./files/16.png'/>
+</p>
+<h1><a id='final'>Conclusiones</a></h1>
+<p>Ha sido una práctica sencilla, solo tuvimos un problema en el DNS que no nos dejaba abrir el FreeNAS desde la otra  máquina virtual.</p>
+</body>
+</html>
